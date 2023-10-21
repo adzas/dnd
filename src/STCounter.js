@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function STCounter(props) {
     const { playersCount, enemyCounter, expSummary, enemyList } = props;
@@ -71,7 +70,7 @@ function STCounter(props) {
     }, [enemySpecular, playersCount, ST]);
 
     return (
-        <>
+        <div>
             <div className="btn second-font" onClick={props.refreshEnemList} style={{backgroundColor: 'var(--primary-color)'}}>
                 {enemyList}
             </div>
@@ -84,7 +83,7 @@ function STCounter(props) {
                 {expSummary}
             </div>
             <div style={{clear: 'both'}} ></div>
-        </>
+        </div>
     );
 }
 

@@ -26,11 +26,13 @@ function PreparingToBattle(props) {
 
     const setSelectedEnemyList = () => {
         const selectedEnemy = battlefield.get();
-        setSelectedEnemies(selectedEnemy.length + ': ');
-        selectedEnemy.map((currentSelected) => {
-            setSelectedEnemies(selectedEnemies => selectedEnemies + ' | ' + currentSelected.name);
-            return true;
-        });
+        if (null !== selectedEnemy) {
+            setSelectedEnemies(selectedEnemy.length + ': ');
+            selectedEnemy.map((currentSelected) => {
+                setSelectedEnemies(selectedEnemies => selectedEnemies + ' | ' + currentSelected.name);
+                return true;
+            });
+        }
     }
 
     const startBattle = () => {

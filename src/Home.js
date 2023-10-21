@@ -19,7 +19,7 @@ function Home(props) {
     }, [props.activeStep]);
 
     return (
-        <div className={'negative-margin-right '+myClass}
+        <div className={' '+myClass} // negative-margin-right
             // style={myStyle}
         >
             <div className="btn"
