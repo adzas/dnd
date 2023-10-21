@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import BackToHome from './BackToHome';
+import Battle from './Battle';
+import Home from './Home';
+import PreparingToBattle from './PreparingToBattle';
+import Rules from './Rules';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      possibleSteps: ['Home', 'PreparingToBattle', 'Rules', 'Battle'],
+      visibleStep: 'Home',
+      battlefieldContent: null
+    };
+  };
+  
+  setVisibleStep = (step) => {
+    if (this.state.possibleSteps.includes(this.state.visibleStep)) {
+      this.setState({
+        visibleStep: step
+      });
+    } else {
+      throw new Error(`Undefined step "${step}"`);
+    }
+  };
+
+  setBattlefieldContent = (jsonData) => {
+    this.setState({
+      battlefieldContent: jsonData
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Home changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
+        <BackToHome changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
+        <PreparingToBattle changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} setBattlefield={this.setBattlefieldContent} />
+        <Battle changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} content={this.state.battlefieldContent} />
+        <Rules changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
+      </div>
+    );
+  }
 }
 
 export default App;

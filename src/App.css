@@ -1,38 +1,107 @@
 .App {
+  margin-top: 1em;
   text-align: center;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  color: #fff;
+  /* text-shadow: 0px 0px 12px rgb(0, 0, 0); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.second-font {
+  font-size: .7em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.d-none {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+:root {
+  --primary-color: #44647b;
+  --secondary-color: #81abc3;
+  --gray-color: #929293;
+  --second-gray-color: #b2b1b1; 
 }
 
-.App-link {
-  color: #61dafb;
+.avatar {
+  border-radius: 50%;
+  transition: all 1s ease; /* Dodaj animację na wszystkie właściwości z 1s trwania i efektem łatwego przyspieszenia (ease) */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.avatar:active {
+  transform: translateY(-100px); /* Przesuń przycisk o 10 pikseli w górę (możesz dostosować wartość) */
+  opacity: 0; /* Zmień przezroczystość na 0, aby zaniknął */
+}
+
+.main-menu-btn-style {
+  text-transform: uppercase;
+  width: 100%;
+  height: 50px;
+  border: none;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+
+.beginning-button {
+  background-color: var(--primary-color);
+}
+
+.rules-button{
+  background-color: var(--secondary-color);
+  /* @extend .main-menu-btn-style; */
+}
+
+.main-menu-btn-animate-style {
+  transition: all 1s; /* Dodaj animację na wszystkie właściwości z 1s trwania i efektem łatwego przyspieszenia (ease) */
+}
+
+.main-menu-btn-animate-style:active {
+  transform: translateY(100px); /* Przesuń przycisk o 10 pikseli w dół (możesz dostosować wartość) */
+  opacity: 0; /* Zmień przezroczystość na 0, aby zaniknął */
+}
+
+.logo-animate-style {
+  transition: all 1s ease; /* Dodaj animację na wszystkie właściwości z 1s trwania i efektem łatwego przyspieszenia (ease) */
+}
+
+.logo-animate-style:active {
+  transform: translateY(-100px); /* Przesuń przycisk o 10 pikseli w górę (możesz dostosować wartość) */
+  opacity: 0; /* Zmień przezroczystość na 0, aby zaniknął */
+}
+
+.btn {
+  border-radius: .5em;
+  padding: .5em;
+  margin: .5em;
+  width: 364px;
+}
+
+.btn-right, .btn-left {
+  padding: .5em;
+  display: inline-block;
+  width: calc(50% - .5em); /* Ustaw szerokość na 50% minus margines na obu stronach */
+  box-sizing: border-box; /* Zapobiega dodawaniu marginesów do szerokości */
+}
+
+.btn-left {
+  margin: .5em 0px .5em .5em;
+  border-radius: .5em 0 0 .5em;
+  float: left; /* Wyśrodkuj element w lewym rogu */
+}
+
+.btn-right {
+  margin: .5em .5em .5em 0px;
+  border-radius: 0 .5em .5em 0;
+  float: left; /* Wyśrodkuj element w prawym rogu */
+}
+
+.transition-height {
+  transition: height .2s ease-out;
+}
+
+.transition-opacity {
+  transition: opacity .1s;
+}
+
+.negative-margin-right {
+  transition: margin 2s;
 }
