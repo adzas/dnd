@@ -6,11 +6,11 @@ function Home(props) {
     useEffect(() => {
        if ('Home' === props.activeStep) {
             // setTimeout(() => {
-                setMyStyle({marginRight: '0px'});
+                // setMyStyle({marginRight: '0px'});
             // }, 1000);
             setMyClass('');
        } else {
-            setMyStyle({marginRight: '-500px'});
+            // setMyStyle({marginRight: '-500px'});
             // setTimeout(() => {
                 setMyClass('d-none');
             // }, 1000);
@@ -18,19 +18,16 @@ function Home(props) {
     }, [props.activeStep]);
 
     return (
-        <div
-            className={'negative-margin-right '+myClass}
+        <div className={'negative-margin-right '+myClass}
             style={myStyle}
         >
-            <div
-                className="btn"
+            <div className="btn"
                 style={{backgroundColor: 'var(--primary-color)'}}
                 onClick={() => {props.changeVisible('PreparingToBattle')}}
             >
                 Przygotowania do bitwy
             </div>
-            <div 
-                className="btn"
+            <div className="btn"
                 style={{backgroundColor: 'var(--secondary-color)'}}
                 onClick={() => {props.changeVisible('Rules')}}
             >
