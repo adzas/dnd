@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import BattlefieldStorage from "./basic/battlefield-storage";
 import EnemyList from "./EnemyList";

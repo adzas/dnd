@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect, useState } from 'react';
 
 function Home(props) {
-    const [myStyle, setMyStyle] = useState({marginRight: '-500px'})
+    // const [myStyle, setMyStyle] = useState({marginRight: '-500px'})
     const [myClass, setMyClass] = useState('');
     useEffect(() => {
        if ('Home' === props.activeStep) {
@@ -19,7 +20,7 @@ function Home(props) {
 
     return (
         <div className={'negative-margin-right '+myClass}
-            style={myStyle}
+            // style={myStyle}
         >
             <div className="btn"
                 style={{backgroundColor: 'var(--primary-color)'}}

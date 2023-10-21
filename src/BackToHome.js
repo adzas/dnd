@@ -1,3 +1,4 @@
+import React from 'react';
 
 function BackToHome(props) {
     const myClass = ('Home' === props.activeStep || 'Battle' === props.activeStep) ? 'd-none' : 'btn';

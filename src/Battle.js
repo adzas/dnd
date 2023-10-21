@@ -1,3 +1,4 @@
+import React from 'react';
 import BattlefieldElementList from "./BattlefieldElementList";
 
 function Battle(props) {
