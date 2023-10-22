@@ -43,9 +43,15 @@ import RotMonsterGenerator from '../enemy-generators/rot-monster-generator';
 import RotMonster from '../enemy-type/rot-monster';
 import HillGiantGenerator from '../enemy-generators/hill-giant-generator';
 import HillGiant from '../enemy-type/hill-giant';
+import GuardGenerator from "../enemy-generators/guard-generator";
+import Guard from "../enemy-type/guard";
+import BlackPuddingGenerator from "../enemy-generators/black-pudding-generator";
+import BlackPudding from "../enemy-type/black-pudding";
 
 export default class EnemyHelper {
     pathToConfigFile = './storage/config/enemies-config-2308291905.json';
+    // REACT_APP_CONFIG_PATH
+    // pathToConfigFile = process.env.REACT_APP_CONFIG_PATH;
     getRandomEnemyObjectByType(enemyType, customInitiative) {
         const enemyObject = this.getClassObjectKindByTypeEnemy(enemyType, 'getGenerator');
 
@@ -255,6 +261,22 @@ export default class EnemyHelper {
                     classObjectReturned = new HillGiantGenerator(this.appClass);
                 } else {
                     classObjectReturned = new HillGiant(object, this.appClass);
+                }
+                break;
+
+            case 'guard':
+                if ('getGenerator' === requestKind) {
+                    classObjectReturned = new GuardGenerator(this.appClass);
+                } else {
+                    classObjectReturned = new Guard(object, this.appClass);
+                }
+                break;
+
+            case 'black-pudding':
+                if ('getGenerator' === requestKind) {
+                    classObjectReturned = new BlackPuddingGenerator(this.appClass);
+                } else {
+                    classObjectReturned = new BlackPudding(object, this.appClass);
                 }
                 break;
 

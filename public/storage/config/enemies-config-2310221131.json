@@ -1,6 +1,17 @@
 {
     "group": [
         {
+            "name": "Miasto",
+            "content": [
+                {
+                    "name": "Strażnik",
+                    "EXP": 25,
+                    "type": "guard",
+                    "btnClass": "btn-danger"
+                }
+            ]
+        },
+        {
             "name": "Bandyci",
             "content": [
                 {
@@ -82,6 +93,23 @@
                     "name": "Gnoll przywódca watachy",
                     "EXP": 450,
                     "type": "gnoll-pack-lord",
+                    "btnClass": "btn-danger"
+                }
+            ]
+        },
+        {
+            "name": "Mutanty",
+            "content": [
+                {
+                    "name": "Czarny pudding",
+                    "EXP": 1100,
+                    "type": "black-pudding",
+                    "btnClass": "btn-danger"
+                },
+                {
+                    "name": "Rdzewnik",
+                    "EXP": 100,
+                    "type": "ruster",
                     "btnClass": "btn-danger"
                 }
             ]
@@ -242,6 +270,11 @@
             "type": "greatclub",
             "function": "attackGreatclub",
             "name": "Maczuga"
+        },
+        {
+            "type": "fake-nugget",
+            "function": "attackFakeNugget",
+            "name": "atak nibynużką"
         }
     ]
 }
