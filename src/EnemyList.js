@@ -28,12 +28,12 @@ function EnemyList(props) {
                     <p className="details__p">
                     {group.content.map((enemyElement, k2) => (
                         <button
-                        key={k2}
-                        className={`btn ${enemyElement.btnClass} btn-sm js-enemy`}
-                        style={{backgroundColor: 'var(--second-gray-color)'}}
-                        data-type={enemyElement.type}
-                        type="button"
-                        onClick={() => {props.add(enemyElement)}}
+                          key={k2}
+                          className={`btn ${enemyElement.btnClass} btn-sm js-enemy`}
+                          style={{backgroundColor: 'var(--second-gray-color)'}}
+                          data-type={enemyElement.type}
+                          type="button"
+                          onClick={() => {props.add(enemyElement)}}
                         >
                         {`${enemyElement.name} - ${enemyElement.EXP}`}
                         </button>
@@ -54,19 +54,6 @@ function EnemyList(props) {
         )}
       </>
     );
-
-    /**
-     * 
-    return (
-      <div className="battlefieldList">
-        {
-          jsonData.map((item, index) => (
-            <BattlefieldElementList key={index} data={item} />
-          ))
-        }
-      </div>
-    );
-     */
 }
 
 export default EnemyList;

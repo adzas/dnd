@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import BattlefieldStorage from './basic/battlefield-storage';
 import BattlefieldElementList from "./BattlefieldElementList";
 
 function Battle(props) {
+    const [orderId, setOrderId] = useState(props.currElID);
     const sectionClass = 'Battle' === props.activeStep ? 'battleContent' : 'd-none';
-    const elementClass = 'Battle' === props.activeStep ? 'btn' : ''; //  transition-height
+    // eslint-disable-next-line
+    const battlefield = new BattlefieldStorage();
+
+    useEffect(() => {
+        if (battlefield.getLastActiveID() < orderId) {
+            setOrderId(battlefield.getFirstActiveID());
+        }
+    }, [orderId, battlefield]);
 
     return (
         <div className={sectionClass}>
@@ -14,9 +23,10 @@ function Battle(props) {
             </div>
             { null !== props.content ? props.content.map(item => (
 
-                <BattlefieldElementList key={item.id} data={item} elementClass={elementClass} />
+                <BattlefieldElementList key={item.id} data={item} orderId={orderId} 
+                    nextElement={setOrderId}/>
                 
-            )) : 'ściernisko' }
+            )) : <div style={{color: 'black'}}>Pole bitwy jest puste <br/> ... </div> }
         </div>
     );
 }

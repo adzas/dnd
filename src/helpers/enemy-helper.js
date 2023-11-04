@@ -47,11 +47,11 @@ import GuardGenerator from "../enemy-generators/guard-generator";
 import Guard from "../enemy-type/guard";
 import BlackPuddingGenerator from "../enemy-generators/black-pudding-generator";
 import BlackPudding from "../enemy-type/black-pudding";
+import RusterGenerator from "../enemy-generators/ruster-generator";
+import Ruster from "../enemy-type/ruster";
 
 export default class EnemyHelper {
     pathToConfigFile = './storage/config/enemies-config-2308291905.json';
-    // REACT_APP_CONFIG_PATH
-    // pathToConfigFile = process.env.REACT_APP_CONFIG_PATH;
     getRandomEnemyObjectByType(enemyType, customInitiative) {
         const enemyObject = this.getClassObjectKindByTypeEnemy(enemyType, 'getGenerator');
 
@@ -277,6 +277,14 @@ export default class EnemyHelper {
                     classObjectReturned = new BlackPuddingGenerator(this.appClass);
                 } else {
                     classObjectReturned = new BlackPudding(object, this.appClass);
+                }
+                break;
+
+            case 'ruster':
+                if ('getGenerator' === requestKind) {
+                    classObjectReturned = new RusterGenerator(this.appClass);
+                } else {
+                    classObjectReturned = new Ruster(object, this.appClass);
                 }
                 break;
 

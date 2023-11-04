@@ -28,7 +28,7 @@ function STCounter(props) {
 
     useEffect(() => {
         let actualST = ST;
-        const lvl = 4;
+        const lvl = 5;
         let rangeEasy = 25;
         let rangeMedium = 50;
         let rangeHard = 75;
@@ -42,10 +42,10 @@ function STCounter(props) {
                 break;
 
             case 5:
-                rangeEasy = 125;
-                rangeMedium = 250;
-                rangeHard = 375;
-                rangeDead = 500;
+                rangeEasy = 250;
+                rangeMedium = 500;
+                rangeHard = 750;
+                rangeDead = 1100;
                 break;
         
             default:

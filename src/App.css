@@ -32,6 +32,10 @@
   opacity: 0; /* Zmień przezroczystość na 0, aby zaniknął */
 }
 
+.avatarLabel {
+  color: #091d53;
+}
+
 .main-menu-btn-style {
   text-transform: uppercase;
   width: 100%;

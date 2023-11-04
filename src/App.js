@@ -7,12 +7,18 @@ import PreparingToBattle from './PreparingToBattle';
 import Rules from './Rules';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
+      // component list
       possibleSteps: ['Home', 'PreparingToBattle', 'Rules', 'Battle'],
-      visibleStep: 'Home',
-      battlefieldContent: null
+      // default visible component
+      visibleStep: 'PreparingToBattle',
+      // Battlefield content - list of enemies and players
+      battlefieldContent: null,
+      // state game process like as actual enemy tour
+      gameProcess: {currentElementID: 0}
     };
   };
   
@@ -26,9 +32,11 @@ class App extends Component {
     }
   };
 
-  setBattlefieldContent = (jsonData) => {
+  // this is switch between PreparingToBattle and Battle elements
+  setBattlefieldContent = (jsonData, currentElementID) => {
     this.setState({
-      battlefieldContent: jsonData
+      battlefieldContent: jsonData,
+      gameProcess: {currentElementID: currentElementID}
     });
   }
 
@@ -36,9 +44,21 @@ class App extends Component {
     return (
       <div className="App">
         <Home changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
+        {/* Is always visible except in Battle element */}
         <BackToHome changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
-        <PreparingToBattle changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} setBattlefield={this.setBattlefieldContent} />
-        <Battle changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} content={this.state.battlefieldContent} />
+
+        <PreparingToBattle
+          changeVisible={this.setVisibleStep}
+          activeStep={this.state.visibleStep}
+          setBattlefield={this.setBattlefieldContent}
+        />
+        <Battle
+          changeVisible={this.setVisibleStep}
+          activeStep={this.state.visibleStep}
+          content={this.state.battlefieldContent}
+          currElID={this.state.gameProcess.currentElementID}
+        />
+
         <Rules changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
       </div>
     );

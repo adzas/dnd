@@ -1,41 +1,21 @@
-import { Component } from "react";
+import React from "react";
 
-const logo = {
-    name: 'DM-Helper',
-    url: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: '90'
-};
-
-class Logo extends Component{
-    constructor (props) {
-        super(props);
-        this.state = {
-            isClicked: false
-        };
-    };
+function Logo () {
     
-    hiddenLogo = () => {
-        // this.setState({isClicked: true});
-    }
-
-    render() {
-        let additionalClass = this.state.isClicked ? 'd-none' : '';
-
-        return (
-            <span className="logo-animate-style" onClick={this.hiddenLogo}>
-                <img
-                    className={`avatar ${additionalClass}`}
-                    src={logo.url}
-                    alt={'picture app '+logo.name}
-                    style={{
-                        witdh: logo.imageSize,
-                        heigth: logo.imageSize
-                    }}
-                />
-                <h1 className={additionalClass}>{logo.name}</h1>
-            </span>
-        );
-    }
+    return (
+        <span>
+            <img
+                className="avatar"
+                src="./DnDIcon2.png"
+                alt={'App DnDHelper Icon'}
+                style={{
+                    width: 90,
+                    heigth: 90
+                }}
+            />
+            <h3 className="avatarLabel">Dangeon & Dragons<br/>Master Helper</h3>
+        </span>
+    );
 }
 
 export default Logo;

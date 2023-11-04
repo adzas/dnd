@@ -1,11 +1,12 @@
 
 export default class BattlefieldStorage {
     currentGameStorage = 'gameStorage';
+    gameProcess = 'gameProcess';
+    players = ['alsariph', 'omalen', 'hum', 'kreatura'];
     store(obj) {
         let bfStorage = [];
         const currentBfStorage = this.get();
-        const players = ['Alsariph', 'Omalen', 'Hum', 'Kreatura'];
-        const isPlayer = players.includes(obj.type);
+        const isPlayer = this.players.includes(obj.type);
         obj.lp = 0;
         if (null === currentBfStorage) {
             obj.id = 1;
@@ -32,7 +33,9 @@ export default class BattlefieldStorage {
         let st = 0;
         let content = this.get();
         for (let k in content) {
-            st += content[k].statistics.xp;
+            if (!this.players.includes(content[k].type)) {
+                st += content[k].statistics.xp;
+            }
         }
 
         return st;
@@ -146,9 +149,8 @@ export default class BattlefieldStorage {
     };
     getEnemyCounter(data) {
         let counter = 0;
-        const players = ['Alsariph', 'Hum', 'Kreatura', 'Omalen'];
         for (let i in data) {
-            if (!players.includes(data[i].type)) {
+            if (!this.players.includes(data[i].type)) {
                 counter++;
             }
         }
@@ -195,5 +197,47 @@ export default class BattlefieldStorage {
     };
     saveGameSettingsInLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
+    };
+
+    /** function by client */
+    sortByInitiative() {
+        let bfContent = this.get();
+        this.clearBFStorage();
+        let newBfContent = bfContent.sort(this.sortByIni);
+        this.saveAll(newBfContent);
+    }
+    getGameProcess() {
+        return JSON.parse(localStorage.getItem(this.gameProcess));
+    }
+    setGameProcess(data) {
+        localStorage.setItem(this.gameProcess, JSON.stringify(data));
+    }
+    getLastActiveID() {
+        let maxID = 0;
+        let bfContent = this.get();
+        const newBfContent = bfContent.sort(this.sortById);
+        newBfContent.forEach(e => {
+            if (0 < e.statistics.hp) {
+                if (e.id > maxID) {
+                    maxID = e.id;
+                }
+            }
+        });
+        
+        return maxID;
+    }
+    getFirstActiveID() {
+        let minID = 0;
+        let bfContent = this.get();
+        const newBfContent = bfContent.sort(this.sortById);
+        newBfContent.forEach(e => {
+            if (0 < e.statistics.hp) {
+                if (e.id < minID) {
+                    minID = e.id;
+                }
+            }
+        });
+        
+        return minID;
     }
 }
