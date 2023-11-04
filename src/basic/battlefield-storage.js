@@ -215,6 +215,9 @@ export default class BattlefieldStorage {
     getLastActiveID() {
         let maxID = 0;
         let bfContent = this.get();
+        if (null === bfContent) {
+            return null;
+        }
         const newBfContent = bfContent.sort(this.sortById);
         newBfContent.forEach(e => {
             if (0 < e.statistics.hp) {
@@ -229,6 +232,9 @@ export default class BattlefieldStorage {
     getFirstActiveID() {
         let minID = 0;
         let bfContent = this.get();
+        if (null === bfContent) {
+            return null;
+        }
         const newBfContent = bfContent.sort(this.sortById);
         newBfContent.forEach(e => {
             if (0 < e.statistics.hp) {
