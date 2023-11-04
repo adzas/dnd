@@ -14,7 +14,7 @@ class App extends Component {
       // component list
       possibleSteps: ['Home', 'PreparingToBattle', 'Rules', 'Battle'],
       // default visible component
-      visibleStep: 'PreparingToBattle',
+      visibleStep: 'Home',
       // Battlefield content - list of enemies and players
       battlefieldContent: null,
       // state game process like as actual enemy tour
