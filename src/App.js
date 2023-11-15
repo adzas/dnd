@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import BackToHome from './BackToHome';
 import Battle from './Battle';
 import Home from './Home';
 import PreparingToBattle from './PreparingToBattle';
 import Rules from './Rules';
+import Settings from './Settings';
 
 class App extends Component {
 
@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       // component list
-      possibleSteps: ['Home', 'PreparingToBattle', 'Rules', 'Battle'],
+      possibleSteps: ['Home', 'PreparingToBattle', 'Rules', 'Battle', 'Settings'],
       // default visible component
       visibleStep: 'Home',
       // Battlefield content - list of enemies and players
@@ -44,9 +44,6 @@ class App extends Component {
     return (
       <div className="App">
         <Home changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
-        {/* Is always visible except in Battle element */}
-        <BackToHome changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
-
         <PreparingToBattle
           changeVisible={this.setVisibleStep}
           activeStep={this.state.visibleStep}
@@ -58,8 +55,8 @@ class App extends Component {
           content={this.state.battlefieldContent}
           currElID={this.state.gameProcess.currentElementID}
         />
-
         <Rules changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
+        <Settings changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
       </div>
     );
   }

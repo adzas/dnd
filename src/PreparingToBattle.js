@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import BackToHome from './BackToHome';
 import BattlefieldStorage from "./basic/battlefield-storage";
 import EnemyList from "./EnemyList";
 import EnemyHelper from "./helpers/enemy-helper";
@@ -18,6 +18,17 @@ function PreparingToBattle(props) {
     const [selectedEnemies, setSelectedEnemies] = useState('Lista przeciwników');
     // counter generated enemies to the battlefield
     const [enemyCount, setEnemyCount] = useState(null !== battlefield.get() ? battlefield.get().length : 0);
+    const [myClass, setMyClass] = useState('panel left-1');
+
+    useEffect(() => {
+        if ('PreparingToBattle' === props.activeStep) {
+            setMyClass('panel');
+        } else if ('Battle' === props.activeStep) {
+            setMyClass('panel left-2');
+        } else {
+            setMyClass('panel left-1');
+        }
+    }, [props.activeStep])
 
     // add enemy to the storage and prepare settings around.
     const addEnemy = (enemy, initiative = null) => {
@@ -69,7 +80,8 @@ function PreparingToBattle(props) {
     };
 
     return (
-        <div className={'PreparingToBattle' !== props.activeStep ? 'd-none' : ''}>
+        <div className={myClass}>
+        <BackToHome changeVisible={props.changeVisible} activeStep={props.activeStep} />
             <STCounter
                 playersCount={playerList.length}
                 enemyCounter={enemyCount}

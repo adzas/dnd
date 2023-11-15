@@ -6,9 +6,9 @@ function Home(props) {
     const [myClass, setMyClass] = useState('');
     useEffect(() => {
        if ('Home' === props.activeStep) {
-            setMyClass('');
+            setMyClass('panel');
        } else {
-            setMyClass('d-none');
+            setMyClass('panel left-2');
        }
     }, [props.activeStep]);
 
@@ -26,6 +26,12 @@ function Home(props) {
                 onClick={() => {props.changeVisible('Rules')}}
             >
                 Podręcznik
+            </div>
+            <div className="btn"
+                style={{backgroundColor: 'var(--second-gray-color)'}}
+                onClick={() => {props.changeVisible('Settings')}}
+            >
+                Ustawienia
             </div>
         </div>
     );

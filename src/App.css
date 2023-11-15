@@ -1,4 +1,17 @@
+:root {
+  --primary-color: #44647b;
+  --secondary-color: #81abc3;
+  --gray-color: #929293;
+  --second-gray-color: #b2b1b1; 
+}
+
 .App {
+  position: relative;
+  width: 400px;
+  height: 756px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
   margin-top: 1em;
   text-align: center;
   font-family: 'Merriweather', serif;
@@ -11,15 +24,19 @@
   font-size: .7em;
 }
 
-.d-none {
-  display: none;
+.panel {
+  position: absolute;
+  width: 400px;
+  left: 0px;
+  transition: left .5s;
 }
 
-:root {
-  --primary-color: #44647b;
-  --secondary-color: #81abc3;
-  --gray-color: #929293;
-  --second-gray-color: #b2b1b1; 
+.left-1 {
+  left: 450px;
+}
+
+.left-2 {
+  left: -450px;
 }
 
 .avatar {
@@ -99,7 +116,7 @@
 }
 
 .transition-height {
-  transition: height .2s ease-out;
+  transition: height .5s ease-out;
 }
 
 .transition-opacity {
@@ -107,5 +124,5 @@
 }
 
 .negative-margin-right {
-  transition: margin 2s;
+  transition: marleft .5s;
 }

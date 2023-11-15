@@ -4,7 +4,7 @@ import BattlefieldElementList from "./BattlefieldElementList";
 
 function Battle(props) {
     const [orderId, setOrderId] = useState(props.currElID);
-    const sectionClass = 'Battle' === props.activeStep ? 'battleContent' : 'd-none';
+    const sectionClass = 'Battle' === props.activeStep ? 'panel' : 'panel left-1';
     // eslint-disable-next-line
     const battlefield = new BattlefieldStorage();
 
