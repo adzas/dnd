@@ -9,8 +9,8 @@ function Logo () {
                 src="./DnDIcon2.png"
                 alt={'App DnDHelper Icon'}
                 style={{
-                    width: 90,
-                    heigth: 90
+                    width: '5em',
+                    heigth: '5em'
                 }}
             />
             <h3 className="avatarLabel">Dangeon & Dragons<br/>Master Helper</h3>

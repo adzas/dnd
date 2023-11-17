@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BackToHome from './BackToHome';
 import BattlefieldStorage from "./basic/battlefield-storage";
 import EnemyList from "./EnemyList";
+import ConstHelper from './helpers/constHelper';
 import EnemyHelper from "./helpers/enemy-helper";
 import PlayerList from './PlayerList';
 import STCounter from "./STCounter";
@@ -18,15 +19,15 @@ function PreparingToBattle(props) {
     const [selectedEnemies, setSelectedEnemies] = useState('Lista przeciwników');
     // counter generated enemies to the battlefield
     const [enemyCount, setEnemyCount] = useState(null !== battlefield.get() ? battlefield.get().length : 0);
-    const [myClass, setMyClass] = useState('panel left-1');
+    const [myStyle, setMyStyle] = useState({width: ConstHelper.getWidthApp()});
 
     useEffect(() => {
         if ('PreparingToBattle' === props.activeStep) {
-            setMyClass('panel');
+            setMyStyle({width: ConstHelper.getWidthApp()})
         } else if ('Battle' === props.activeStep) {
-            setMyClass('panel left-2');
+            setMyStyle({width: ConstHelper.getWidthApp(), left: -ConstHelper.getWidthApp()})
         } else {
-            setMyClass('panel left-1');
+            setMyStyle({width: ConstHelper.getWidthApp(), left: ConstHelper.getWidthApp()})
         }
     }, [props.activeStep])
 
@@ -80,7 +81,7 @@ function PreparingToBattle(props) {
     };
 
     return (
-        <div className={myClass}>
+        <div className='panel' style={myStyle}>
         <BackToHome changeVisible={props.changeVisible} activeStep={props.activeStep} />
             <STCounter
                 playersCount={playerList.length}

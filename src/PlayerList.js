@@ -9,25 +9,26 @@ function PlayerList (props) {
 
     return (
         <div>
-            <input className="btn" style={{width: 'calc(100% - 70px)'}}
+            <input className="btn" style={{width: '90%', fontSize: '1em'}}
                 placeholder="inicjatywa gracza"
                 type="number" min="0" max="100" step="0.1" 
                 onKeyUp={(e) => {setCustomInit(e.target.value)}}
                 onClick={(e) => {e.target.value = '';}}
             />
-                <br/>
-            {players.map((player, k) => (
-                <button
-                    key={k}
-                    className="btn"
-                    style={{backgroundColor: 'var(--gray-color)'}}
-                    data-type={player}
-                    type="button"
-                    onClick={() => {addPlayerToBattlefield(player)}}
-                >
-                    {player}
-                </button>
-            ))}
+            <div style={{display: 'grid', gridTemplateColumns: 'auto auto', padding: '1em'}}>
+                {players.map((player, k) => (
+                    <div
+                        key={k}
+                        className="btn"
+                        style={{backgroundColor: 'var(--secondary-color)'}}
+                        data-type={player}
+                        // type="button"
+                        onClick={() => {addPlayerToBattlefield(player)}}
+                    >
+                        {player}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

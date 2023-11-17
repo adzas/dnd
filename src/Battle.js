@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import BattlefieldStorage from './basic/battlefield-storage';
 import BattlefieldElementList from "./BattlefieldElementList";
+import ConstHelper from './helpers/constHelper';
 
 function Battle(props) {
     const [orderId, setOrderId] = useState(props.currElID);
-    const sectionClass = 'Battle' === props.activeStep ? 'panel' : 'panel left-1';
+    const [myStyle, setMyStyle] = useState({width: ConstHelper.getWidthApp()})
+    useEffect(() => {
+        if ('Battle' === props.activeStep) {
+            setMyStyle({width: ConstHelper.getWidthApp()});
+        } else {
+            setMyStyle({width: ConstHelper.getWidthApp(), left: ConstHelper.getWidthApp()});
+        }
+    }, [props.activeStep]);
+
     // eslint-disable-next-line
     const battlefield = new BattlefieldStorage();
 
@@ -15,7 +24,7 @@ function Battle(props) {
     }, [orderId, battlefield]);
 
     return (
-        <div className={sectionClass}>
+        <div className='panel' style={myStyle}>
             <div className='btn' style={{backgroundColor: 'var(--second-gray-color)'}}
                 onClick={() => {props.changeVisible('PreparingToBattle')}}
             >

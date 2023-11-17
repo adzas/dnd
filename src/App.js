@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Battle from './Battle';
+import ConstHelper from './helpers/constHelper';
 import Home from './Home';
 import PreparingToBattle from './PreparingToBattle';
 import Rules from './Rules';
@@ -42,7 +43,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App"  style={{width: ConstHelper.getWidthApp()}}>
         <Home changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
         <PreparingToBattle
           changeVisible={this.setVisibleStep}

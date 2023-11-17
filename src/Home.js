@@ -1,19 +1,20 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Logo from './Logo';
+import ConstHelper from './helpers/constHelper';
 
 function Home(props) {
-    const [myClass, setMyClass] = useState('');
+    const [myStyle, setMyStyle] = useState({width: ConstHelper.getWidthApp()});
     useEffect(() => {
        if ('Home' === props.activeStep) {
-            setMyClass('panel');
+            setMyStyle({width: ConstHelper.getWidthApp()});
        } else {
-            setMyClass('panel left-2');
+            setMyStyle({width: ConstHelper.getWidthApp(), left: ConstHelper.getWidthApp()});
        }
     }, [props.activeStep]);
 
     return (
-        <div className={myClass} >
+        <div className='panel' style={myStyle}>
             <Logo />
             <div className="btn"
                 style={{backgroundColor: 'var(--primary-color)'}}
