@@ -43,7 +43,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App"  style={{width: ConstHelper.getWidthApp(), minHeight: 2*ConstHelper.getHeightApp(), height: 'auto'}}>
+      <div className="App"  style={{width: ConstHelper.getWidthApp(), minHeight: ConstHelper.getHeightApp(), height: 'auto'}}>
         <Home changeVisible={this.setVisibleStep} activeStep={this.state.visibleStep} />
         <PreparingToBattle
           changeVisible={this.setVisibleStep}

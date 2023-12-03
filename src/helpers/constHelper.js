@@ -6,7 +6,7 @@ export default class ConstHelper
     }
 
     static getHeightApp() {
-        return window.innerHeight;
+        return 1500;
     }
 }
 
