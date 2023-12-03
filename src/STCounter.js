@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function STCounter(props) {
     const { playersCount, enemyCounter, expSummary, enemyList } = props;
-    const [ST, setST] = useState('poniżej poziomu');
+    const [ST, setST] = useState('---');
     const [enemySpecular, setEnemySpecular] = useState(expSummary);
 
     useEffect(() => {
@@ -52,7 +52,7 @@ function STCounter(props) {
                 break;
         }
         if ((rangeEasy*playersCount) > enemySpecular) {
-            actualST = 'poniżej poziomu';
+            actualST = '---';
         }
         if ((rangeEasy*playersCount) <= enemySpecular) {
             actualST = 'łatwe';
@@ -75,7 +75,7 @@ function STCounter(props) {
                 {enemyList}
             </div>
             <div className="btn-left" style={{backgroundColor: 'var(--secondary-color)'}}>
-                poziom wyzwania: <br/>
+                PW: <br/>
                 {ST}
             </div>
             <div className="btn-right" style={{backgroundColor: 'var(--secondary-color)'}}>

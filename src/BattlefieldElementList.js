@@ -14,7 +14,14 @@ function BattlefieldElementList(props) {
     useEffect(() => {
         if (data.id === props.orderId) {
             setEClass('btn');
-            setMyStyle({backgroundColor: 'var(--secondary-color)', height: '50px'});
+            let h = '140px';
+            if (0 == enemyObiect.shortInfo().length) {
+                h = '120px';
+            }
+            setMyStyle({
+                backgroundColor: 'var(--secondary-color)', 
+                height: h}
+            );
         } else {
             setEClass('d-none');
             setMyStyle({});
@@ -48,11 +55,11 @@ function BattlefieldElementList(props) {
 
             {data.lp}. - {data.name} - {data.statistics.initiative}
 
-            <div className='btn' onClick={showOrHiddenAction}>
+            <div className='btn shortInfo' onClick={showOrHiddenAction}>
                 {enemyObiect.shortInfo()}
             </div>
 
-            <div className={actionClass+' transition-opacity'} style={myStyleAction}>
+            <div className={actionClass+' transition-opacity informationClass'} style={myStyleAction}>
                 {data.actions.map(action => (
                     <div key={action}>{action}</div>
                 ))}
@@ -60,7 +67,7 @@ function BattlefieldElementList(props) {
             </div>
 
             <div
-                className='btn' 
+                className={'btn '+eClass}
                 style={{backgroundColor: 'var(--gray-color)'}}
                 onClick={() => {props.nextElement(data.id+1)}}
             >

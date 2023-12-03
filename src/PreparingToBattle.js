@@ -96,9 +96,9 @@ function PreparingToBattle(props) {
             >
                 Start
             </div>
+            <div className="btn" style={{backgroundColor: 'var(--gray-color)'}} onClick={clear}>Wyzeruj</div>
             <PlayerList players={playerList} add={addEnemy} />
             <EnemyList add={addEnemy} />
-            <div className="btn" style={{backgroundColor: 'var(--secondary-color)'}} onClick={clear}>Wyzeruj</div>
         </div>
     );
 }

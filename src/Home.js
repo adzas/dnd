@@ -9,7 +9,7 @@ function Home(props) {
        if ('Home' === props.activeStep) {
             setMyStyle({width: ConstHelper.getWidthApp()});
        } else {
-            setMyStyle({width: ConstHelper.getWidthApp(), left: ConstHelper.getWidthApp()});
+            setMyStyle({width: ConstHelper.getWidthApp(), left: -ConstHelper.getWidthApp()});
        }
     }, [props.activeStep]);
 

@@ -4,12 +4,12 @@ function PlayerList (props) {
     const { players } = props;
     const [customInitiative, setCustomInit] = useState(0);
     const addPlayerToBattlefield = (playerCode) => {
-        props.add({type: playerCode}, customInitiative)
+        props.add({type: playerCode}, +customInitiative)
     }
 
     return (
         <div>
-            <input className="btn" style={{width: '90%', fontSize: '1em'}}
+            <input className="btn" style={{width: '85%', fontSize: '1em'}}
                 placeholder="inicjatywa gracza"
                 type="number" min="0" max="100" step="0.1" 
                 onKeyUp={(e) => {setCustomInit(e.target.value)}}
